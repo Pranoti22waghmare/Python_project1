@@ -1,54 +1,26 @@
+
 import streamlit as st
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
+import plotly.express as px
 
-st.title("pranoti waghmare")
-st.write("MSC DSAI")
+df=pd.read_csv("C:/Users/MSCIT/Desktop/pranoti/heart.csv")
+df
+
+st.title("Pranoti Waghmare")
 st.header("Python")
+st.write("MSC DSAI")
+st.write(df.head())
 
-st.latex(r'''
-    a + ar + a r^2 + a r^3 + \cdots + a r^{n-1} =
-    \sum_{k=0}^{n-1} ar^k =
-    a \left(\frac{1-r^{n}}{1-r}\right)
-    ''')
+fig=px.bar(x=df["chol"],y=df['age'])
+st.plotly_chart(fig)
 
-st.caption('This is a string that explains something above.')
+fig=px.line(x=df["chol"],y=df['age'])
+st.plotly_chart(fig)
 
-code = '''def hello():
-    print("Hello, Streamlit!")'''
-st.code(code, language='python')
+fig=px.scatter(df["thalach"])
+st.plotly_chart(fig)
 
-
-st.text('This is some text.')
-
-df = pd.DataFrame(
-   np.random.randn(10, 5),
-   columns=('col %d' % i for i in range(5)))
-
-st.table(df)
-
-chart_data = pd.DataFrame(
-    np.random.randn(20, 3),
-    columns=['a', 'b', 'c'])
-
-st.line_chart(chart_data)
-
-chart_data = pd.DataFrame(
-    np.random.randn(20, 3),
-    columns=['a', 'b', 'c'])
-
-st.area_chart(chart_data)
-
-col1, col2, col3 = st.columns(3)
-
-with col1:
-   st.header("A cat")
-   st.image("https://static.streamlit.io/examples/cat.jpg")
-
-with col2:
-   st.header("A dog")
-   st.image("https://static.streamlit.io/examples/dog.jpg")
-
-with col3:
-   st.header("An owl")
-   st.image("https://static.streamlit.io/examples/owl.jpg")
+fig=px.histogram(x=df["chol"])
+st.plotly_chart(fig)
