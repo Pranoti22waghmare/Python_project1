@@ -5,7 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import plotly.express as px
 
-df=pd.read_csv("C:/Users/MSCIT/Desktop/pranoti/heart.csv")
+df=pd.read_csv("heart.csv")
 df
 
 st.title("Pranoti Waghmare")
